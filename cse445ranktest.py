@@ -31,7 +31,7 @@ fertilizer1Import = fertilizer1[fertilizer1['flow'] == "Import"]
 
 # Select "weight_kg" column for Imported Urea.
 # Drop any missing rows
-fertilizer1ImportWeight = fertilizer1Import['weight_kg'].dropna(how='any').reset_index(drop=True)
+fertilizer1ImportWeight = fertilizer1Import[fertilizer1Import['weight_kg'] < 1000000000.0]['weight_kg'].dropna(how='any').reset_index(drop=True)
 
 print("-----------------------------------------")
 print(CITALIC + "-> At The End, Seaborn Plot Distribution Graph" + CEND)
@@ -40,7 +40,7 @@ print("-----------------------------------------")
 print(CBOLD + "Fertilizer1: " + CEND + "Urea")
 print(CBOLD + "Fertilizer2: " + CEND + "Ammonium sulphate")
 print("-----------------------------------------")
-print(CBOLD + "\n---------- Test Imported Fertilizer weight for range between 0.0 to 1000000000.0 kg --------" + CEND)
+print(CBOLD + "---------- Test Imported Fertilizer weight for range between 0.0 to 1000000000.0 kg --------" + CEND)
 # Print Minimum weight
 print("Fertilizer1 Min: %.3f kg" % (np.min(fertilizer1ImportWeight)))
 # Print Maximum weight
@@ -56,7 +56,7 @@ fertilizer2Import = fertilizer2[fertilizer2['flow'] == "Import"]
 
 # Select "weight_kg" column for Imported Ammonium sulphate.
 # Drop any missing rows
-fertilizer2ImportWeight = fertilizer2Import['weight_kg'].dropna(how='any').reset_index(drop=True)
+fertilizer2ImportWeight = fertilizer2Import[fertilizer2Import['weight_kg'] < 1000000000.0]['weight_kg'].dropna(how='any').reset_index(drop=True)
 
 # Print Minimum weight
 print("Fertilizer2 Min: %.3f kg" % (np.min(fertilizer2ImportWeight)))
